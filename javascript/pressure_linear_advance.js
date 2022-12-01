@@ -412,7 +412,7 @@ ${(FIRMWARE == 'klipper' ? `SET_VELOCITY_LIMIT ACCEL=${ACCELERATION}` : `M204 P$
         }
         if (ECHO){pa_script += `M117 PA${Math.round10((PA_START + (j * PA_STEP)), PA_round)}\n`}
       }
-      else (FIRMWARE == 'reprap'){
+      else if (FIRMWARE == 'reprap'){
         pa_script += `M572 D${TOOL_INDEX} S${Math.round10((PA_START + (j * PA_STEP)), PA_round)} ; Set pressure advance\n`;
         if (ECHO){pa_script += `M117 ${Math.round10((PA_START + (j * PA_STEP)), PA_round)}\n`}
       }
