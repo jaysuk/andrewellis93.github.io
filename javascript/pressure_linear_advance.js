@@ -1053,7 +1053,7 @@ M109 S[HOTEND_TEMP]  ; Set and wait for hotend temp
 ;G29                 ; Auto bed leveling
 M112                 ; Reading comprehension check! (emergency stop)`
 
-var REPRAP_GCODE = `\
+  var REPRAP_GCODE = `\
 G28                  ; Home all axes
 T[TOOL_INDEX]        ; Select tool
 G90                  ; Absolute XYZ
@@ -1113,7 +1113,7 @@ G90      ; Absolute XYZ
 M84      ; Disable motors
 M501     ; Load settings from EEPROM (to restore previous values)`
 
-var REPRAP_END_GCODE = `\
+  var REPRAP_END_GCODE = `\
 M107     ; Turn off fan
 M400     ; Finish moving
 M104 S0  ; Turn off hotend
