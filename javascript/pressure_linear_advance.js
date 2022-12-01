@@ -331,7 +331,7 @@ ${(FIRMWARE == 'klipper' ? `SET_VELOCITY_LIMIT ACCEL=${ACCELERATION}` : `M204 P$
   }
   else if (FIRMWARE == 'reprap'){
     pa_script += `M572 D${TOOL_INDEX} S${Math.round10(PA_START, PA_round)} ; Set pressure advance\n`;
-    if (ECHO){pa_script += `M117 ${Math.round10(PA_START, PA_round)}\n`}
+    if (ECHO){pa_script += `M117 PA${Math.round10(PA_START, PA_round)}\n`}
   }
   else {
     pa_script += `M900 K${Math.round10(PA_START, PA_round)} ${(TOOL_INDEX != 0 ? `T${TOOL_INDEX} ` : '')}; Set linear advance k factor\n`;
@@ -414,7 +414,7 @@ ${(FIRMWARE == 'klipper' ? `SET_VELOCITY_LIMIT ACCEL=${ACCELERATION}` : `M204 P$
       }
       else if (FIRMWARE == 'reprap'){
         pa_script += `M572 D${TOOL_INDEX} S${Math.round10((PA_START + (j * PA_STEP)), PA_round)} ; Set pressure advance\n`;
-        if (ECHO){pa_script += `M117 ${Math.round10((PA_START + (j * PA_STEP)), PA_round)}\n`}
+        if (ECHO){pa_script += `M117 PA${Math.round10((PA_START + (j * PA_STEP)), PA_round)}\n`}
       }
       else {
         pa_script += `M900 K${Math.round10((PA_START + (j * PA_STEP)), PA_round)} ${(TOOL_INDEX != 0 ? `T${TOOL_INDEX} ` : '')}; Set linear advance k factor\n`;
@@ -461,7 +461,7 @@ ${(FIRMWARE == 'klipper' ? `SET_VELOCITY_LIMIT ACCEL=${ACCELERATION}` : `M204 P$
   }
   else if (FIRMWARE == 'reprap'){
     pa_script += `M572 D${TOOL_INDEX} S${Math.round10(PA_START, PA_round)} ; Set pressure advance back to start value\n`;
-    if (ECHO){pa_script += `M117 ${Math.round10(PA_START, PA_round)}\n`}
+    if (ECHO){pa_script += `M117 PA${Math.round10(PA_START, PA_round)}\n`}
   }
   else {
     pa_script += `M900 K${Math.round10(PA_START, PA_round)} ${(TOOL_INDEX != 0 ? `T${TOOL_INDEX} ` : '')}; Set linear advance k factor back to start value\n`;
