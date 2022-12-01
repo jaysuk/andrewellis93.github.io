@@ -1186,7 +1186,7 @@ Run the test again with a narrower range and finer increment afterwards.<br><br>
       $('label[for=PA_END]').html('PA End Value')
       $('label[for=PA_STEP]').html('PA Increment')
       $('#START_GCODE_TYPE').parents().eq(1).hide()
-      $('#END_GCODE').val(KLIPPER_END_GCODE);
+      $('#END_GCODE').val(REPRAP_END_GCODE);
       break;
   }
 }
