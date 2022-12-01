@@ -1172,7 +1172,7 @@ Run the test again with a narrower range and finer increment afterwards.<br><br>
       $('#START_GCODE_TYPE').parents().eq(1).hide()
       $('#END_GCODE').val(MARLIN_END_GCODE);
       break;
-    case $('#FIRMWARE').val() == ('klipper') :
+    case $('#FIRMWARE').val() == ('reprap') :
       $('#TOOL_INDEX').parents().eq(1).show()
       $('#EXTRUDER_NAME').parents().eq(1).hide()
       $('#STEPPING_HEADER').html('Pressure Advance Stepping')
