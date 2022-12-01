@@ -330,7 +330,7 @@ ${(FIRMWARE == 'klipper' ? `SET_VELOCITY_LIMIT ACCEL=${ACCELERATION}` : `M204 P$
     if (ECHO){pa_script += `M117 PA${Math.round10(PA_START, PA_round)}\n`}
   }
   else if (FIRMWARE == 'reprap'){
-    pa_script += `M572 D${TOOL_INDEX} S${Math.round10(PA_START, PA_round)} ; Set pressure advance\n`;
+    pa_script += `M572 ${(TOOL_INDEX != 0 ? `D${TOOL_INDEX} S${Math.round10(PA_START, PA_round)} ; Set pressure advance\n`;
     if (ECHO){pa_script += `M117 PA${Math.round10(PA_START, PA_round)}\n`}
   }
   else {
@@ -413,7 +413,7 @@ ${(FIRMWARE == 'klipper' ? `SET_VELOCITY_LIMIT ACCEL=${ACCELERATION}` : `M204 P$
         if (ECHO){pa_script += `M117 PA${Math.round10((PA_START + (j * PA_STEP)), PA_round)}\n`}
       }
       else if (FIRMWARE == 'reprap'){
-        pa_script += `M572 D${TOOL_INDEX} S${Math.round10((PA_START + (j * PA_STEP)), PA_round)} ; Set pressure advance\n`;
+        pa_script += `M572 ${(TOOL_INDEX != 0 ? `D${TOOL_INDEX} S${Math.round10((PA_START + (j * PA_STEP)), PA_round)} ; Set pressure advance\n`;
         if (ECHO){pa_script += `M117 PA${Math.round10((PA_START + (j * PA_STEP)), PA_round)}\n`}
       }
       else {
@@ -460,7 +460,7 @@ ${(FIRMWARE == 'klipper' ? `SET_VELOCITY_LIMIT ACCEL=${ACCELERATION}` : `M204 P$
     if (ECHO){pa_script += `M117 PA${Math.round10(PA_START, PA_round)}\n`}
   }
   else if (FIRMWARE == 'reprap'){
-    pa_script += `M572 D${TOOL_INDEX} S${Math.round10(PA_START, PA_round)} ; Set pressure advance back to start value\n`;
+    pa_script += `M572 ${(TOOL_INDEX != 0 ? `D${TOOL_INDEX} S${Math.round10(PA_START, PA_round)} ; Set pressure advance back to start value\n`;
     if (ECHO){pa_script += `M117 PA${Math.round10(PA_START, PA_round)}\n`}
   }
   else {
@@ -1059,7 +1059,8 @@ T[TOOL_INDEX]        ; Select tool
 G90                  ; Absolute XYZ
 G1 Z5 F100           ; Z raise
 M190 S[BED_TEMP]     ; Set and wait for bed temp
-M109 S[HOTEND_TEMP]  ; Set and wait for hotend temp
+M568 P[TOOL_INDEX] S[HOTEND_TEMP] A2   ; Set hotend temp
+M116                 ; Wait for temperatures to stabilise
 ;G29                 ; Auto bed leveling
 M112                 ; Reading comprehension check! (emergency stop)`
 
