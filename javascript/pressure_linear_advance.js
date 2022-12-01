@@ -1070,7 +1070,7 @@ M112                 ; Reading comprehension check! (emergency stop)`
     case $('#START_GCODE_TYPE').val() == "custom-marlin" :
       $('#START_GCODE').val(MARLIN_GCODE);
       break;
-    case $('#START_GCODE_TYPE').val() == "custom-reprap" :
+    case $('#START_GCODE_TYPE').val() == "reprap" :
       $('#START_GCODE').val(REPRAP_GCODE);
       break;
     case $('#START_GCODE_TYPE').val() == "standalone" :
@@ -1209,7 +1209,7 @@ function toggleFirmwareValues(){
       $('#PA_START').val(0)
       $('#PA_END').val(0.08)
       $('#PA_STEP').val(0.005)
-      $('#START_GCODE_TYPE').val('custom-reprap')
+      $('#START_GCODE_TYPE').val('reprap')
       break;
     case $('#FIRMWARE').val() === 'klipper' :
       $('#START_GCODE_TYPE').val('custom');
